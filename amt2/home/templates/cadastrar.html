@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cadastrar Livro</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<script>
+function validarFormulario(){
+
+let titulo = document.getElementById("titulo").value;
+let ano = document.getElementById("ano").value;
+let paginas = document.getElementById("paginas").value;
+
+if(titulo == ""){
+alert("O campo título é obrigatório!");
+return false;
+}
+
+if(isNaN(ano) || ano == ""){
+alert("Ano precisa ser um número!");
+return false;
+}
+
+if(paginas <= 0){
+alert("Número de páginas deve ser maior que 0!");
+return false;
+}
+
+return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="menu">
+<a href="/">Home</a>
+<a href="/cadastrar/">Cadastrar Livro</a>
+<a href="/consultar/">Consultar</a>
+<a href="/listar/">Listar Livros</a>
+<a href="/sobre/">Sobre</a>
+<a href="/contato/">Contato</a>
+</div>
+
+<div class="container">
+
+<h2 align="center">Cadastrar Livro</h2>
+
+<form method="POST" onsubmit="return validarFormulario()">
+
+{% csrf_token %}
+
+<input type="text" id="titulo" name="titulo" placeholder="Título do livro">
+
+<input type="text" name="autor" placeholder="Autor">
+
+<input type="text" name="editora" placeholder="Editora">
+
+<input type="text" id="ano" name="ano" placeholder="Ano de publicação">
+
+<input type="number" id="paginas" name="paginas" placeholder="Número de páginas">
+
+<input type="text" name="categoria" placeholder="Categoria">
+
+<input type="text" name="isbn" placeholder="ISBN">
+
+<input type="text" name="idioma" placeholder="Idioma">
+
+<textarea name="descricao" placeholder="Descrição do livro"></textarea>
+
+<input type="text" name="cadastrado_por" placeholder="Nome de quem cadastrou">
+
+<button type="submit">Cadastrar</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
