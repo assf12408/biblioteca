@@ -1,0 +1,155 @@
+body{
+font-family: 'Poppins', Arial, sans-serif;
+background: linear-gradient(135deg,#f5e6c8,#d9b38c);
+margin:0;
+padding:0;
+animation: fadeIn 1s ease;
+}
+
+/* MENU */
+
+.menu{
+background: linear-gradient(90deg,#4b2e1e,#8b5e3c);
+padding:18px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+.menu a{
+color:#fff;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+font-size:17px;
+padding:8px 15px;
+border-radius:6px;
+transition:0.3s;
+}
+
+.menu a:hover{
+background:#ffd700;
+color:#4b2e1e;
+transform:scale(1.1);
+}
+
+/* CONTAINER */
+
+.container{
+width:85%;
+margin:40px auto;
+padding:35px;
+background:linear-gradient(180deg,#fffaf0,#f7e6d5);
+border-radius:10px;
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+animation: slideUp 0.7s ease;
+}
+
+/* TITULOS */
+
+h1,h2{
+color:#4b2e1e;
+text-align:center;
+margin-bottom:25px;
+letter-spacing:1px;
+}
+
+/* FORM */
+
+form{
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:500px;
+margin:auto;
+}
+
+/* CAMPOS */
+
+input, textarea{
+padding:12px;
+border:1px solid #c8b6a6;
+border-radius:8px;
+font-size:14px;
+background:#fff;
+transition:0.3s;
+}
+
+input:focus, textarea:focus{
+border:1px solid #ff9800;
+box-shadow:0 0 8px rgba(255,152,0,0.7);
+transform:scale(1.02);
+}
+
+/* BOTÃO */
+
+button{
+background:linear-gradient(45deg,#6b3e26,#ff9800);
+color:white;
+padding:13px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* TABELA */
+
+table{
+border-collapse: collapse;
+width:90%;
+margin:auto;
+background:white;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+table th{
+background:linear-gradient(90deg,#4b2e1e,#8b5e3c);
+color:white;
+padding:12px;
+}
+
+table td{
+padding:10px;
+border:1px solid #eee;
+text-align:center;
+}
+
+table tr:nth-child(even){
+background:#fff4e6;
+}
+
+table tr:hover{
+background:#ffe0b2;
+transform:scale(1.01);
+transition:0.2s;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slideUp{
+from{
+transform:translateY(40px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}

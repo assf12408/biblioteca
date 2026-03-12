@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Todos os Livros</h2>
+
+<table border="1">
+
+<tr>
+<th>Título</th>
+<th>Autor</th>
+<th>Ação</th>
+</tr>
+
+{% for livro in livros %}
+
+<tr>
+
+<td>{{ livro.titulo }}</td>
+
+<td>{{ livro.autor }}</td>
+
+<td>
+
+<a href="/detalhes/{{livro.id}}/">Detalhes</a>
+
+<a href="/deletar/{{livro.id}}/">Excluir</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

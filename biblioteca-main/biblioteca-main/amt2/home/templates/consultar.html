@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Consultar Livro pelo Nome</h2>
+
+<form method="GET" action="{% url 'consultar' %}">
+
+<input type="text" name="q" placeholder="Digite o nome do livro">
+
+<button type="submit">Buscar</button>
+
+</form>
+
+{% endblock %}

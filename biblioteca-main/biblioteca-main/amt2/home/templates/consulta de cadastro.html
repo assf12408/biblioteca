@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Resultado da busca</h2>
+
+{% if livros %}
+
+{% for livro in livros %}
+
+<p><strong>Título:</strong> {{livro.titulo}}</p>
+<p><strong>Autor:</strong> {{livro.autor}}</p>
+
+<a href="{% url 'detalhes' livro.id %}">Ver detalhes</a>
+
+<hr>
+
+{% endfor %}
+
+{% else %}
+
+<p>Nenhum livro encontrado.</p>
+
+{% endif %}
+
+{% endblock %}

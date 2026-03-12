@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Tem certeza que deseja excluir?</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<button type="submit">Sim, excluir</button>
+
+</form>
+
+<br>
+
+<a href="/listar/">Cancelar</a>
+
+{% endblock %}
