@@ -1,58 +1,69 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .models import Pessoa  
+from .models import Livro
+
 
 def home(request):
     return render(request, 'home.html')
 
-def index(request):
-    return render(request, 'INDEX.html')
 
 def cadastrar(request):
+
     if request.method == 'POST':
 
-        nome = request.POST.get('nome')
-        email = request.POST.get('email')
-        telefone = request.POST.get('telefone')
-        cpf = request.POST.get('cpf')
-        data_nascimento = request.POST.get('data_nascimento')
-        endereco = request.POST.get('endereco')
-        cidade = request.POST.get('cidade')
-        estado = request.POST.get('estado')
+        titulo = request.POST.get('titulo')
+        autor = request.POST.get('autor')
+        editora = request.POST.get('editora')
+        ano = request.POST.get('ano')
+        paginas = request.POST.get('paginas')
+        categoria = request.POST.get('categoria')
+        isbn = request.POST.get('isbn')
+        idioma = request.POST.get('idioma')
+        descricao = request.POST.get('descricao')
+        cadastrado_por = request.POST.get('cadastrado_por')
 
-
-        Pessoa.objects.create(
-            nome=nome,
-            email=email,
-            telefone=telefone,
-            cpf=cpf,
-            data_nascimento=data_nascimento,
-            endereco=endereco,
-            cidade=cidade,
-            estado=estado
+        Livro.objects.create(
+            titulo=titulo,
+            autor=autor,
+            editora=editora,
+            ano=ano,
+            paginas=paginas,
+            categoria=categoria,
+            isbn=isbn,
+            idioma=idioma,
+            descricao=descricao,
+            cadastrado_por=cadastrado_por
         )
+
         return redirect('listar')
 
     return render(request, 'cadastrar.html')
 
-
 def consultar(request):
-    query = request.GET.get('q', '')
-    pessoas = Pessoa.objects.filter(nome__icontains=query) if query else []
-    return render(request, 'consultar.html', {'pessoas': pessoas, 'seu_nome': query})
+    query = request.GET.get('q')
+    resultados = []
+
+    if query:
+        resultados = Livro.objects.filter(titulo__icontains=query)
+
+    return render(request, 'consultar.html', {'resultados': resultados})
 
 
 def listar(request):
-    pessoas = Pessoa.objects.all()
-    return render(request, 'listar.html', {'pessoas': pessoas})
+
+    livros = Livro.objects.all()
+
+    return render(request, 'listar.html', {'livros': livros})
 
 
 def deletar(request, id):
-    pessoa = get_object_or_404(Pessoa, id=id)
+
+    livro = get_object_or_404(Livro, id=id)
+
     if request.method == 'POST':
-        pessoa.delete()
+        livro.delete()
         return redirect('listar')
-    return render(request, 'deletar.html', {'pessoa': pessoa})
+
+    return render(request, 'deletar.html', {'livro': livro})
 
 
 def sobre(request):
@@ -61,3 +72,10 @@ def sobre(request):
 
 def contato(request):
     return render(request, 'contato.html')
+
+from django.shortcuts import render, get_object_or_404
+from .models import Livro
+
+def detalhes(request, id):
+    livro = get_object_or_404(Livro, id=id)
+    return render(request, 'detalhes.html', {'livro': livro})

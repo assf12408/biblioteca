@@ -1,16 +1,17 @@
 from django.db import models
 
-class Pessoa(models.Model):
-    nome = models.CharField(max_length=100)
-    email = models.EmailField()
-    telefone = models.CharField(max_length=15)
-    data_nascimento = models.DateField()
-    endereco = models.CharField(max_length=200)
-    cidade = models.CharField(max_length=50)
-    estado = models.CharField(max_length=2)
-    cep = models.CharField(max_length=9)
-    profissao = models.CharField(max_length=50)
-    empresa = models.CharField(max_length=100)
-    
-    def _str_(self):
-        return self.nome
+class Livro(models.Model):
+
+    titulo = models.CharField(max_length=100)
+    autor = models.CharField(max_length=100)
+    editora = models.CharField(max_length=100)
+    ano = models.IntegerField()
+    paginas = models.IntegerField()
+    categoria = models.CharField(max_length=50)
+    isbn = models.CharField(max_length=20)
+    idioma = models.CharField(max_length=30)
+    descricao = models.TextField()
+    cadastrado_por = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.titulo

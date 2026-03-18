@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -21,12 +22,15 @@
 <td>{{ livro.autor }}</td>
 
 <td>
+  <a href="{% url 'detalhes' livro.id %}" class="btn detalhes">
+    Ver detalhes
+  </a>
 
-<a href="/detalhes/{{livro.id}}/">Detalhes</a>
-
-<a href="/deletar/{{livro.id}}/">Excluir</a>
-
+  <a href="{% url 'deletar' livro.id %}" class="btn danger">
+    Excluir
+  </a>
 </td>
+
 
 </tr>
 
@@ -35,3 +39,10 @@
 </table>
 
 {% endblock %}
+
+
+<button type="submit" class="btn danger">
+Sim, excluir
+</button>
+
+<button type="submit" href="/listar/" class="btn danger">

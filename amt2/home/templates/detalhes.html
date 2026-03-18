@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ livro.titulo }}</h2>
+
+{% if livro.imagem %}
+  <img src="{{ livro.imagem.url }}" width="150">
+{% endif %}
+
+<hr>
+
+<p><strong>Título:</strong> {{ livro.titulo }}</p>
+<p><strong>Autor:</strong> {{ livro.autor }}</p>
+<p><strong>Editora:</strong> {{ livro.editora }}</p>
+<p><strong>Ano:</strong> {{ livro.ano }}</p>
+<p><strong>Páginas:</strong> {{ livro.paginas }}</p>
+<p><strong>Categoria:</strong> {{ livro.categoria }}</p>
+<p><strong>ISBN:</strong> {{ livro.isbn }}</p>
+<p><strong>Idioma:</strong> {{ livro.idioma }}</p>
+
+<hr>
+
+<p><strong>Descrição:</strong></p>
+<p>{{ livro.descricao }}</p>
+
+<hr>
+
+<p><strong>Cadastrado por:</strong> {{ livro.cadastrado_por }}</p>
+
+<br>
+
+<a href="{% url 'listar' %}" class="btn-detalhes">Voltar</a>
+
+{% endblock %}

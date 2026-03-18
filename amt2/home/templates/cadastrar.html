@@ -1,53 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Cadastrar Livro</title>
-
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-<script>
-function validarFormulario(){
-
-let titulo = document.getElementById("titulo").value;
-let ano = document.getElementById("ano").value;
-let paginas = document.getElementById("paginas").value;
-
-if(titulo == ""){
-alert("O campo título é obrigatório!");
-return false;
-}
-
-if(isNaN(ano) || ano == ""){
-alert("Ano precisa ser um número!");
-return false;
-}
-
-if(paginas <= 0){
-alert("Número de páginas deve ser maior que 0!");
-return false;
-}
-
-return true;
-}
-</script>
-
-</head>
-
-<body>
-
-<div class="menu">
-<a href="/">Home</a>
-<a href="/cadastrar/">Cadastrar Livro</a>
-<a href="/consultar/">Consultar</a>
-<a href="/listar/">Listar Livros</a>
-<a href="/sobre/">Sobre</a>
-<a href="/contato/">Contato</a>
-</div>
-
-<div class="container">
+{% block content %}
 
 <h2 align="center">Cadastrar Livro</h2>
 
@@ -79,7 +33,30 @@ return true;
 
 </form>
 
-</div>
+<script>
+function validarFormulario(){
 
-</body>
-</html>
+let titulo = document.getElementById("titulo").value;
+let ano = document.getElementById("ano").value;
+let paginas = document.getElementById("paginas").value;
+
+if(titulo == ""){
+alert("O campo título é obrigatório!");
+return false;
+}
+
+if(isNaN(ano) || ano == ""){
+alert("Ano precisa ser um número!");
+return false;
+}
+
+if(paginas <= 0){
+alert("Número de páginas deve ser maior que 0!");
+return false;
+}
+
+return true;
+}
+</script>
+
+{% endblock %}

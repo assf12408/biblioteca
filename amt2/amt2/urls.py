@@ -29,6 +29,6 @@ urlpatterns = [
     path('listar/', views.listar, name='listar'),
     path('sobre/', views.sobre, name='sobre'),
     path('contato/', views.contato, name='contato'),
-
+    path('detalhes/<int:id>/', views.detalhes, name='detalhes'),
     path('deletar/<int:id>/', views.deletar, name='deletar'),
 ]
